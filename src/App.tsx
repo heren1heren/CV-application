@@ -1,6 +1,16 @@
-import { useState } from 'react';
-import { ToggleDisplayButton } from './components/left-input-components/app';
+import {
+  EducationalInputSection,
+  PersonalInputSection,
+  PracticalInputSection,
+  ToggleDisplayButton,
+} from './components/left-input-components/app';
 import './App.scss';
+import {
+  EducationalDisplaySection,
+  ExperienceDisplaySection,
+  PersonalDisplaySection,
+} from './components/other-components/app';
+
 // create a layout first
 /**
  * * a left section for editing(background color: light blue)
@@ -17,17 +27,19 @@ export function PageHeader() {
 export function LeftInputForm() {
   return (
     <aside className="input-form">
-      <p>
-        please change the position of the expand button to the right-top-corner!
-      </p>
+      {
+        //please change the position of the expand button to the right-top-corner!
+      }
+      <ToggleDisplayButton />
       {/*  import A section to add general information like name, email and phone 
            import A section to add your educational experience (school name, title of study and date of study)
            import A section to add practical experience (company name, position title, main responsibilities of your jobs, date from and until when you worked for that company)
            *each section contain an edit and submit button (unsolved)
            *each section  can be expand and shrink by button (unsolved)
       */}
-      number. */
-      <ToggleDisplayButton />
+      <PersonalInputSection />
+      <EducationalInputSection />
+      <PracticalInputSection />
     </aside>
   );
 }
@@ -36,6 +48,9 @@ export function DisplayForm() {
   return (
     <main className="display-form">
       <p>please add display field for me and giving these border!</p>
+      <PersonalDisplaySection />
+      <EducationalDisplaySection />
+      <ExperienceDisplaySection />
     </main>
   );
 }
