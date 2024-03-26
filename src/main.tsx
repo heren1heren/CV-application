@@ -1,10 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import { Person } from './App';
+import './index.scss';
+import { DisplayForm, LeftInputForm, PageHeader } from './App';
 const root: HTMLElement = document.getElementById('root')!;
 ReactDOM.createRoot(root).render(
   <React.StrictMode>
-    <Person />
+    <PageHeader />
+    <div className="main-wrapper">
+      <LeftInputForm />
+      <DisplayForm />
+    </div>
   </React.StrictMode>
 );
