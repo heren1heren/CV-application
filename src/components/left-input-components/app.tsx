@@ -1,12 +1,13 @@
 import { log } from 'console';
 import './style.scss';
+import { useState } from 'react';
 
-export function ToggleDisplayButton() {
-  // how to put an icon inside the button?
-  // how to change text inside button -> change icon?
+// export function ToggleDisplayButton() {
+//   // how to put an icon inside the button?
+//   // how to change text inside button -> change icon?
 
-  return <button>Expand</button>;
-}
+//   return <button>Expand</button>;
+// }
 
 export function PersonalInputSection({ handleChange }) {
   {
@@ -17,26 +18,62 @@ export function PersonalInputSection({ handleChange }) {
         is already style (unsolved)
      */
   }
+  const [nameValue, setNameValue] = useState('');
+  const [emailValue, setEmailValue] = useState('');
+  const [phoneNumberValue, setPhoneNumberValue] = useState('');
   console.log(handleChange);
+  function handleSubmitClick() {
+    // prevent user from input others than number in number phone section.
+    console.log(phoneNumberValue);
 
+    handleChange({
+      name: nameValue,
+      email: emailValue,
+      phoneNumber: phoneNumberValue,
+    });
+  }
+  function handleNameValue() {
+    set;
+  }
   return (
     <section className="personal-input-section">
       <div className="section-title">Personal information:</div>{' '}
       <div className="input-section">
         <label htmlFor="name-input">
           Name:
-          <input id="name-input" type="text" />
+          <input
+            id="name-input"
+            type="text"
+            onChange={(e) => {
+              setNameValue(e.target.value);
+            }}
+          />
         </label>
         <label htmlFor="email-input">
           Email:
-          <input type="email" id="email-input" />
+          <input
+            type="email"
+            id="email-input"
+            onChange={(e) => {
+              setEmailValue(e.target.value);
+            }}
+          />
         </label>
         <label htmlFor="phoneNumber-input">
           Phone-number:
-          <input type="text" id="phoneNumber-input" />
+          <input
+            type="text"
+            id="phoneNumber-input"
+            onChange={(e) => {
+              setPhoneNumberValue(e.target.value);
+            }}
+          />
         </label>
         <button className="edit-button">Edit</button>
-        <button className="submit-button">Submit</button>
+        {/* is there a way to access inputs' value without using states? */}
+        <button className="submit-button" onClick={handleSubmitClick}>
+          Submit
+        </button>
       </div>
     </section>
   );

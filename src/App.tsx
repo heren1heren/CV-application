@@ -30,9 +30,18 @@ export function MainWrapper() {
     email: 'a@gmail.com',
     phoneNumber: '111',
   });
-  const handleChangePersonalInfo = (info) => {
-    setPersonalInfo(...personalInfo, info: '')
-  }
+  // const handleChangeNameInfo = (info) => {
+  //   setPersonalInfo({ ...personalInfo, name: info });
+  // };
+  // const handleChangeEmailInfo = (info) => {
+  //   setPersonalInfo({ ...personalInfo, email: info });
+  // };
+  // const handleChangePhoneNumberInfo = (info) => {
+  //   setPersonalInfo({ ...personalInfo, phoneNumber: info });
+  // };
+  const handleDateChange = (objData) => {
+    setPersonalInfo({ ...personalInfo, ...objData });
+  };
   const handleResetClick = () => {
     // may be we don't need to set boolean?
     setIsReset(true);
@@ -41,15 +50,18 @@ export function MainWrapper() {
 
   return (
     <div className="main-wrapper">
-      <LeftInputForm handleResetClick={handleResetClick} handleChange={handleChangePersonalInfo} />
+      <LeftInputForm
+        handleResetClick={handleResetClick}
+        handleChange={handleDateChange}
+      />
       <DisplayForm isReset={isReset} personalInfo={personalInfo} />
     </div>
   );
 }
-function LeftInputForm({ handleResetClick,handleChange}) {
+function LeftInputForm({ handleResetClick, handleChange }) {
   return (
     <aside className="input-form">
-      <PersonalInputSection  handleChange={handleChange}/>
+      <PersonalInputSection handleChange={handleChange} />
       <EducationalInputSection />
       <PracticalInputSection />
       <ResetButton handleResetClick={handleResetClick} />

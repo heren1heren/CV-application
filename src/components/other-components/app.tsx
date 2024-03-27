@@ -1,6 +1,6 @@
 import './style.scss';
 
-export function PersonalDisplaySection({ isReset, personalInfo }) {
+export function PersonalDisplaySection({ personalInfo }) {
   /*
    * structuring display-section?
    */
@@ -14,14 +14,14 @@ export function PersonalDisplaySection({ isReset, personalInfo }) {
     </div>
   );
 }
-export function EducationalDisplaySection({ isReset }) {
+export function EducationalDisplaySection() {
   /*
    * please give me instruction to complete me
    */
   return <div className="educational-display-section"></div>;
 }
 
-export function ExperienceDisplaySection({ isReset }) {
+export function ExperienceDisplaySection() {
   /*
    * please give me instruction to complete me
    */
