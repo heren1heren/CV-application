@@ -1,0 +1,13 @@
+.personal-input-section,
+.practical-input-section,
+.educational-input-section {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+.input-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    flex-direction: row;
+}
