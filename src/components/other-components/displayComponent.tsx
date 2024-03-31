@@ -7,8 +7,8 @@ export function PersonalDisplaySection({ personalInfo }) {
   return (
     <div className="personal-display-section">
       <p className="name-p">{personalInfo.name}</p>
-      <p className="email-p">{personalInfo.email}</p>
-      <p className="number-phone-p">{personalInfo.phoneNumber}</p>
+      <p className="email-p">Email:{personalInfo.email}</p>
+      <p className="number-phone-p">Phone:{personalInfo.phoneNumber}</p>
     </div>
   );
 }
@@ -18,10 +18,11 @@ export function EducationalDisplaySection({ practicalInfo }) {
    */
   return (
     <div className="educational-display-section">
-      <p className="school-p">{practicalInfo.school}</p>
-      <p className="titleOfStudy-p">{practicalInfo.titleOfStudy}</p>
-      <p className="startDate-p">{practicalInfo.startDate}</p>
-      <p className="endDate-p">{practicalInfo.endDate}</p>
+      <h2>Education:</h2>
+      <p className="titleOfStudy-p">program: {practicalInfo.titleOfStudy}</p>
+      <p className="school-p">school: {practicalInfo.school}</p>
+      <p className="startDate-p">startDate: {practicalInfo.startDate}</p>
+      <p className="endDate-p">endDate: {practicalInfo.endDate}</p>
     </div>
   );
 }
@@ -33,9 +34,14 @@ export function ExperienceDisplaySection({ experienceInfo }) {
 
   return (
     <div className="experience-display-section">
-      <p className="company-p">{experienceInfo.company}</p>
-      <p className="position-p">{experienceInfo.position}</p>
-      <p className="jobDescription-p">{experienceInfo.jobDescription}</p>
+      <h2>Experience:</h2>
+      <p className="company-p">Company: {experienceInfo.company}</p>
+      <p className="position-p">
+        Position with Date: {experienceInfo.position}
+      </p>
+      <p className="jobDescription-p">
+        Description: {experienceInfo.jobDescription}
+      </p>
     </div>
   );
 }

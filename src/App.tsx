@@ -55,7 +55,9 @@ export function MainWrapper() {
     setExperienceInfo((prevState) => ({ ...prevState, ...objData }));
   };
   const handleResetClick = () => {
-    setIsReset(true);
+    setExperienceInfo({});
+    setPersonalInfo({});
+    setPracticalInfo({});
     // when we start pushing inputs value -> setIsReset(false);
   };
 
@@ -68,7 +70,6 @@ export function MainWrapper() {
         handleExperienceInfoChange={handleExperienceInfoChange}
       />
       <DisplayForm
-        isReset={isReset}
         personalInfo={personalInfo}
         practicalInfo={practicalInfo}
         experienceInfo={experienceInfo}
@@ -92,13 +93,7 @@ function LeftInputForm({
   );
 }
 
-function DisplayForm({ isReset, personalInfo, experienceInfo, practicalInfo }) {
-  if (isReset === true) {
-    // reset inputs' values.
-    // return <main className="display-form"></main>;
-  }
-  console.log(practicalInfo);
-  console.log(experienceInfo);
+function DisplayForm({ personalInfo, experienceInfo, practicalInfo }) {
   return (
     <main className="display-form">
       <PersonalDisplaySection personalInfo={personalInfo} />
@@ -110,7 +105,7 @@ function DisplayForm({ isReset, personalInfo, experienceInfo, practicalInfo }) {
 function ResetButton({ handleResetClick }) {
   return (
     <button className="reset-button" onClick={handleResetClick}>
-      Reset form
+      Reset form.
     </button>
   );
 }

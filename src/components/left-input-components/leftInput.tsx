@@ -21,8 +21,6 @@ export function PersonalInputSection({ handleChange }) {
   const [phoneNumberValue, setPhoneNumberValue] = useState('');
 
   function handleSubmitClick() {
-    console.log(phoneNumberValue);
-
     handleChange({
       name: nameValue,
       email: emailValue,

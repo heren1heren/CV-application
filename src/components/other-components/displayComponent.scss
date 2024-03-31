@@ -1,7 +1,58 @@
 .experience-display-section,
 .educational-display-section,
 .personal-display-section {
+    padding: 3px;
     border: 1px solid black;
-    height: 20vh;
     width: 100%;
+    min-height: 20vh;
+}
+p {
+    margin: 0;
+}
+.delete {
+    display: none;
+}
+.personal-display-section {
+    display: flex;
+    flex-direction: column;
+    .name-p {
+        font-size: 40px;
+    }
+    .email-p {
+        align-self: flex-end;
+        margin-right: 20px;
+    }
+    .number-phone-p {
+        margin-top: 30px;
+        align-self: flex-end;
+        margin-right: 40px;
+    }
+}
+
+.educational-display-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    h2 {
+        all: unset;
+        font-size: 30px;
+    }
+    .titleOfStudy-p {
+        margin-left: 20px;
+    }
+    .school-p,
+    .startDate-p,
+    .endDate-p {
+        margin-left: 40px;
+    }
+}
+.experience-display-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    h2 {
+        all: unset;
+        font-size: 30px;
+    }
 }
