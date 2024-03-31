@@ -1,5 +1,4 @@
-import { log } from 'console';
-import './style.scss';
+import './leftInput.scss';
 import { useState } from 'react';
 
 // export function ToggleDisplayButton() {
@@ -12,8 +11,7 @@ import { useState } from 'react';
 export function PersonalInputSection({ handleChange }) {
   {
     /*  
-    what to do now? displaying inputs inside display-section
-    how?
+  
         contains expand button ( in form of an icon)    
         is already style (unsolved)
      */
@@ -21,9 +19,8 @@ export function PersonalInputSection({ handleChange }) {
   const [nameValue, setNameValue] = useState('');
   const [emailValue, setEmailValue] = useState('');
   const [phoneNumberValue, setPhoneNumberValue] = useState('');
-  console.log(handleChange);
+
   function handleSubmitClick() {
-    // prevent user from input others than number in number phone section.
     console.log(phoneNumberValue);
 
     handleChange({
@@ -32,9 +29,7 @@ export function PersonalInputSection({ handleChange }) {
       phoneNumber: phoneNumberValue,
     });
   }
-  function handleNameValue() {
-    set;
-  }
+
   return (
     <section className="personal-input-section">
       <div className="section-title">Personal information:</div>{' '}
@@ -78,19 +73,27 @@ export function PersonalInputSection({ handleChange }) {
     </section>
   );
 }
-export function EducationalInputSection() {
+export function EducationalInputSection({ handleChange }) {
   {
     /*
-       contains school name input
-       contains title of study input
-       contains date of study  input
-     
        contains expand button ( in form of an icon)    
-       is already style (unsolved)
-
+       is already style (unsolved
     */
   }
 
+  const [schoolValue, setSchoolValue] = useState('');
+  const [titleOfStudyValue, setTitleOfStudyValue] = useState('');
+  const [startDateValue, setStartDateValue] = useState('');
+  const [endDateValue, setEndDateValue] = useState('');
+
+  function handleSubmitClick() {
+    handleChange({
+      school: schoolValue,
+      titleOfStudy: titleOfStudyValue,
+      startDate: startDateValue,
+      endDate: endDateValue,
+    });
+  }
   return (
     <section className="educational-input-section">
       <div className="section-title">Educational information:</div>
@@ -98,40 +101,73 @@ export function EducationalInputSection() {
         <label htmlFor="school-name-input">
           {' '}
           School name:
-          <input type="text" id="school-name-input" />
+          <input
+            type="text"
+            id="school-name-input"
+            onChange={(e) => {
+              setSchoolValue(e.target.value);
+            }}
+          />
         </label>
         <label htmlFor="title-of-study-input">
           Title of study:
-          <input type="text" id="title-of-study-input" />
+          <input
+            type="text"
+            id="title-of-study-input"
+            onChange={(e) => {
+              setTitleOfStudyValue(e.target.value);
+            }}
+          />
         </label>
         <label htmlFor="date-of-study-input">
           Date of study:
-          <input type="date" className="date-of-study-input" />
+          <input
+            type="date"
+            className="date-of-study-input"
+            onChange={(e) => {
+              setStartDateValue(e.target.value);
+            }}
+          />
         </label>
         <label htmlFor="date-of-finish-study-input">
           {' '}
           date of finish:
-          <input type="date" className="date-of-finish-study-input" />
+          <input
+            type="date"
+            className="date-of-finish-study-input"
+            onChange={(e) => {
+              setEndDateValue(e.target.value);
+            }}
+          />
         </label>
         <button className="edit-button">Edit</button>
-        <button className="submit-button">Submit</button>
+        <button className="submit-button" onClick={handleSubmitClick}>
+          Submit
+        </button>
       </div>
     </section>
   );
 }
-export function PracticalInputSection() {
+export function PracticalInputSection({ handleChange }) {
   {
     /*
-      contains company name input    
-      contains position title    
-      contains description of the job input
-      contains date from and until  when you worked for that company
-      contains submit button
-      contains edit button
+      
       contains expand button ( in form of an icon)    
       is already style (unsolved)
 
     */
+  }
+
+  const [companyValue, setCompanyValue] = useState('');
+  const [positionValue, setPositionValue] = useState('');
+  const [jobDescriptionValue, setJobDescriptionValue] = useState('');
+
+  function handleSubmitClick() {
+    handleChange({
+      company: companyValue,
+      position: positionValue,
+      jobDescription: jobDescriptionValue,
+    });
   }
   return (
     <section className="practical-input-section">
@@ -139,17 +175,35 @@ export function PracticalInputSection() {
       <div className="input-section">
         <label htmlFor="company-name-input">
           Company name:
-          <input type="text" id="company-name-input" />
+          <input
+            type="text"
+            id="company-name-input"
+            onChange={(e) => setCompanyValue(e.target.value)}
+          />
         </label>
         <label htmlFor="position-title-input">
           Position title:
-          <input type="text" id="position-title-input" />
+          <input
+            type="text"
+            id="position-title-input"
+            onChange={(e) => setPositionValue(e.target.value)}
+          />
         </label>
         <label htmlFor="job-description-input">
           Job description:
           {/**make the job-description bigger */}
-          <input type="text" id="job-description-input" />
+          <input
+            type="text"
+            id="job-description-input"
+            onChange={(e) => {
+              setJobDescriptionValue(e.target.value);
+            }}
+          />
         </label>
+        <button className="edit-button">Edit</button>
+        <button className="submit-button" onClick={handleSubmitClick}>
+          Submit
+        </button>
       </div>
     </section>
   );

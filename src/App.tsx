@@ -2,14 +2,15 @@ import {
   EducationalInputSection,
   PersonalInputSection,
   PracticalInputSection,
-} from './components/left-input-components/app';
+} from './components/left-input-components/leftInput';
 import './App.scss';
 import {
   EducationalDisplaySection,
   ExperienceDisplaySection,
   PersonalDisplaySection,
-} from './components/other-components/app';
+} from './components/other-components/displayComponent';
 import { useState } from 'react';
+import { log } from 'console';
 
 export function PageHeader() {
   return (
@@ -30,20 +31,30 @@ export function MainWrapper() {
     email: 'a@gmail.com',
     phoneNumber: '111',
   });
-  // const handleChangeNameInfo = (info) => {
-  //   setPersonalInfo({ ...personalInfo, name: info });
-  // };
-  // const handleChangeEmailInfo = (info) => {
-  //   setPersonalInfo({ ...personalInfo, email: info });
-  // };
-  // const handleChangePhoneNumberInfo = (info) => {
-  //   setPersonalInfo({ ...personalInfo, phoneNumber: info });
-  // };
-  const handleDateChange = (objData) => {
-    setPersonalInfo({ ...personalInfo, ...objData });
+  const [practicalInfo, setPracticalInfo] = useState({
+    school: 'my School name',
+    titleOfStudy: 'my diploma name',
+    startDate: ' date/date/date',
+    endDate: ' date/date/date',
+  });
+  const [experienceInfo, setExperienceInfo] = useState({
+    company: 'my company',
+    position: ' my position name',
+    jobDescription: 'description of the job',
+  });
+
+  const handlePersonalInfoChange = (objData) => {
+    setPersonalInfo((prevState) => ({ ...prevState, ...objData }));
+  };
+
+  const handlePracticalInfoChange = (objData) => {
+    setPracticalInfo((prevState) => ({ ...prevState, ...objData }));
+  };
+
+  const handleExperienceInfoChange = (objData) => {
+    setExperienceInfo((prevState) => ({ ...prevState, ...objData }));
   };
   const handleResetClick = () => {
-    // may be we don't need to set boolean?
     setIsReset(true);
     // when we start pushing inputs value -> setIsReset(false);
   };
@@ -52,35 +63,47 @@ export function MainWrapper() {
     <div className="main-wrapper">
       <LeftInputForm
         handleResetClick={handleResetClick}
-        handleChange={handleDateChange}
+        handlePersonalInfoChange={handlePersonalInfoChange}
+        handlePracticalInfoChange={handlePracticalInfoChange}
+        handleExperienceInfoChange={handleExperienceInfoChange}
       />
-      <DisplayForm isReset={isReset} personalInfo={personalInfo} />
+      <DisplayForm
+        isReset={isReset}
+        personalInfo={personalInfo}
+        practicalInfo={practicalInfo}
+        experienceInfo={experienceInfo}
+      />
     </div>
   );
 }
-function LeftInputForm({ handleResetClick, handleChange }) {
+function LeftInputForm({
+  handleResetClick,
+  handlePersonalInfoChange,
+  handlePracticalInfoChange,
+  handleExperienceInfoChange,
+}) {
   return (
     <aside className="input-form">
-      <PersonalInputSection handleChange={handleChange} />
-      <EducationalInputSection />
-      <PracticalInputSection />
+      <PersonalInputSection handleChange={handlePersonalInfoChange} />
+      <EducationalInputSection handleChange={handlePracticalInfoChange} />
+      <PracticalInputSection handleChange={handleExperienceInfoChange} />
       <ResetButton handleResetClick={handleResetClick} />
     </aside>
   );
 }
 
 function DisplayForm({ isReset, personalInfo, experienceInfo, practicalInfo }) {
-  // console.log(isReset);
-
   if (isReset === true) {
     // reset inputs' values.
     // return <main className="display-form"></main>;
   }
+  console.log(practicalInfo);
+  console.log(experienceInfo);
   return (
     <main className="display-form">
       <PersonalDisplaySection personalInfo={personalInfo} />
-      <EducationalDisplaySection />
-      <ExperienceDisplaySection />
+      <EducationalDisplaySection practicalInfo={practicalInfo} />
+      <ExperienceDisplaySection experienceInfo={experienceInfo} />
     </main>
   );
 }
