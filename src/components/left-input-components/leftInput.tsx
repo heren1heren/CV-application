@@ -19,6 +19,10 @@ export function PersonalInputSection({ handleChange }) {
   const [nameValue, setNameValue] = useState('');
   const [emailValue, setEmailValue] = useState('');
   const [phoneNumberValue, setPhoneNumberValue] = useState('');
+  const [isDisplay, setIsDisplay] = useState(true);
+  function handleDisplay() {
+    setIsDisplay(!isDisplay);
+  }
 
   function handleSubmitClick() {
     handleChange({
@@ -27,7 +31,13 @@ export function PersonalInputSection({ handleChange }) {
       phoneNumber: phoneNumberValue,
     });
   }
-
+  if (!isDisplay) {
+    return (
+      <button className="expand/hiding-button" onClick={handleDisplay}>
+        {isDisplay ? 'Hide Section' : ' Expand'}
+      </button>
+    );
+  }
   return (
     <section className="personal-input-section">
       <div className="section-title">Personal information:</div>{' '}
@@ -62,12 +72,14 @@ export function PersonalInputSection({ handleChange }) {
             }}
           />
         </label>
-        <button className="edit-button">Edit</button>
         {/* is there a way to access inputs' value without using states? */}
         <button className="submit-button" onClick={handleSubmitClick}>
           Submit
         </button>
       </div>
+      <button className="expand/hiding-button" onClick={handleDisplay}>
+        {isDisplay ? 'Hide Section' : ' Expand'}
+      </button>
     </section>
   );
 }
@@ -79,11 +91,14 @@ export function EducationalInputSection({ handleChange }) {
     */
   }
 
+  const [isDisplay, setIsDisplay] = useState(true);
   const [schoolValue, setSchoolValue] = useState('');
   const [titleOfStudyValue, setTitleOfStudyValue] = useState('');
   const [startDateValue, setStartDateValue] = useState('');
   const [endDateValue, setEndDateValue] = useState('');
-
+  function handleDisplay() {
+    setIsDisplay(!isDisplay);
+  }
   function handleSubmitClick() {
     handleChange({
       school: schoolValue,
@@ -91,6 +106,13 @@ export function EducationalInputSection({ handleChange }) {
       startDate: startDateValue,
       endDate: endDateValue,
     });
+  }
+  if (!isDisplay) {
+    return (
+      <button className="expand/hiding-button" onClick={handleDisplay}>
+        {isDisplay ? 'Hide Section' : ' Expand'}
+      </button>
+    );
   }
   return (
     <section className="educational-input-section">
@@ -138,11 +160,14 @@ export function EducationalInputSection({ handleChange }) {
             }}
           />
         </label>
-        <button className="edit-button">Edit</button>
+
         <button className="submit-button" onClick={handleSubmitClick}>
           Submit
         </button>
       </div>
+      <button className="expand/hiding-button" onClick={handleDisplay}>
+        {isDisplay ? 'Hide Section' : ' Expand'}
+      </button>
     </section>
   );
 }
@@ -155,10 +180,13 @@ export function PracticalInputSection({ handleChange }) {
 
     */
   }
-
+  const [isDisplay, setIsDisplay] = useState(true);
   const [companyValue, setCompanyValue] = useState('');
   const [positionValue, setPositionValue] = useState('');
   const [jobDescriptionValue, setJobDescriptionValue] = useState('');
+  function handleDisplay() {
+    setIsDisplay(!isDisplay);
+  }
 
   function handleSubmitClick() {
     handleChange({
@@ -166,6 +194,13 @@ export function PracticalInputSection({ handleChange }) {
       position: positionValue,
       jobDescription: jobDescriptionValue,
     });
+  }
+  if (!isDisplay) {
+    return (
+      <button className="expand/hiding-button" onClick={handleDisplay}>
+        {isDisplay ? 'Hide Section' : ' Expand'}
+      </button>
+    );
   }
   return (
     <section className="practical-input-section">
@@ -198,11 +233,13 @@ export function PracticalInputSection({ handleChange }) {
             }}
           />
         </label>
-        <button className="edit-button">Edit</button>
         <button className="submit-button" onClick={handleSubmitClick}>
           Submit
         </button>
       </div>
+      <button className="expand/hiding-button" onClick={handleDisplay}>
+        {isDisplay ? 'Hide Section' : ' Expand'}
+      </button>
     </section>
   );
 }
